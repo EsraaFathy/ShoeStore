@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="shoes_model"
+            type="com.udacity.shoestore.models.Shoe" />
+    <import type="com.udacity.shoestore.utils.DoubleConverter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".ShoeDetailsFragment">
+
+        <TextView
+            android:id="@+id/shoe_title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@string/title" />
+
+        <EditText
+            android:id="@+id/shoe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding20dp"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@={shoes_model.name}"
+            android:hint="@string/add_shoe_title" />
+
+        <TextView
+            android:id="@+id/shoe_company_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@string/shoe_company" />
+
+        <EditText
+            android:id="@+id/shoe_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding20dp"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@={shoes_model.company}"
+            android:hint="@string/shoe_company" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@string/description" />
+
+        <EditText
+            android:id="@+id/shoe_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding20dp"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@={shoes_model.description}"
+            android:hint="@string/add_hint" />
+
+        <TextView
+            android:id="@+id/shoe_size_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@string/shoe_size" />
+
+        <EditText
+            android:id="@+id/shoe_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding20dp"
+            android:textColor="@color/black_color"
+            android:textSize="18sp"
+            android:text="@={DoubleConverter.doubleToString(shoes_model.size)}"
+            android:hint="@string/add_shoe_size" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_button"
+            android:textAllCaps="false"
+            android:text="@string/add_item" />
+
+    </LinearLayout>
+</layout>
