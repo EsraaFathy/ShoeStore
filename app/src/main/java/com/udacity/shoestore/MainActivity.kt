@@ -2,42 +2,55 @@ package com.udacity.shoestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.widget.Toolbar
+import android.view.View
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import timber.log.Timber
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val mainActivityMainBinding : ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
+    private var _mainActivityMainBinding : ActivityMainBinding?= null
+    private val mainActivityMainBinding get() = _mainActivityMainBinding!!
+
+    private var _navController: NavController? = null
+    private val navController: NavController get() = _navController!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        Timber.plant(Timber.DebugTree())
+       _mainActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        setContentView(mainActivityMainBinding.root)
+
+        _navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
-
+        setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController)
+        mainActivityMainBinding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
 
             when (destination.id ) {
                 R.id.on_boarding_nav_fragment-> {
-                    findViewById<Toolbar>(R.id.toolbar).navigationIcon = null
+                    mainActivityMainBinding.toolbar.visibility = View.VISIBLE
+                    mainActivityMainBinding.toolbar.navigationIcon = null
 
                 } R.id.instruction_nav_fragment-> {
-                    findViewById<Toolbar>(R.id.toolbar).navigationIcon = null
+                mainActivityMainBinding.toolbar.navigationIcon = null
 
                 }
             }
         }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _mainActivityMainBinding = null
+        _navController = null
     }
 }

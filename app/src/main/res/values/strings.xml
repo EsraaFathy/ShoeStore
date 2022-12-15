@@ -27,4 +27,5 @@
     <string name="image">Image</string>
     <string name="add_image_url">add image url</string>
     <string name="add_item">add item</string>
+    <string name="log_out">Log out</string>
 </resources>

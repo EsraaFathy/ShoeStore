@@ -2,11 +2,12 @@ package com.udacity.shoestore
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.core.view.MenuHost
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentShoeDetailsBinding
 import com.udacity.shoestore.models.Shoe

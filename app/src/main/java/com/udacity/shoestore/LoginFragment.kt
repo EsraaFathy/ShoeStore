@@ -1,11 +1,12 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,28 +25,12 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
-//        val navHostFragment =
-//            fragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        val navController = navHostFragment.navController
-//        val appBarConfiguration = AppBarConfiguration(
-//            topLevelDestinationIds = setOf(),
-//            fallbackOnNavigateUpListener = ::onSupportNavigateUp
-//        )
-//        activity?.findViewById<Toolbar>(R.id.toolbar)
-//            ?.setupWithNavController(navController, appBarConfiguration)
-
         binding.loginNavFragment.setOnClickListener {
             findNavController().navigate(R.id.action_gfg_nav_to_something2)
         }
 
-
-
         return binding.root
     }
 
-    private fun onSupportNavigateUp(): Boolean {
-        return false
-    }
 
 }
